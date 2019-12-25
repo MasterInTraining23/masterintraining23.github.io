@@ -34,7 +34,7 @@ messageChannel.port1.onmessage = event => {
       });
     });
 
-    observer.observe(document.body, {
+    observer.observe(document, {
         childList: true,
         subtree: true,
         attributes: false,
