@@ -16,9 +16,32 @@
 
 const messageChannel = new MessageChannel();
 messageChannel.port1.onmessage = event => {
-  // const parentStream = window.document.getElementById('parentStream');
   const secondChildStreamItem = window.document.getElementById('secondChildStreamItem');
-  // const newStreamItem = window.document.createElement(event.data.streamItem);
+
+  if (!secondChildStreamItem) {
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (!mutation.addedNodes) return
+
+        for (var i = 0; i < mutation.addedNodes.length; i++) {
+          const node = mutation.addedNodes[i];
+          if (node.id == 'secondChildStreamItem') {
+            secondChildStreamItem = node;
+            this.disconnect();
+            break;
+          }
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+        attributes: false,
+        characterData: false,
+    });
+  }
+
   secondChildStreamItem.insertAdjacentHTML('beforebegin', event.data.streamItem);
 }
 
@@ -33,6 +56,7 @@ if ('serviceWorker' in navigator) {
     });
   });
 
+  console.log('navigator.serviceWorker', navigator.serviceWorker);
   navigator.serviceWorker.ready.then(registration => {
     registration.active.postMessage({msgType: 'SAVE_PORT'}, [messageChannel.port2]);
   });
