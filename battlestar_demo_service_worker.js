@@ -7,6 +7,7 @@ self.addEventListener('activate', event => {
   this.clients.matchAll().then(clients => {
     console.log("all clients", clients);
     clients.forEach(client => {
+      console.log("client: ", client);
       client.postMessage('hello from the other side');
     });
   });
