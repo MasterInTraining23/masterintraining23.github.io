@@ -1,7 +1,7 @@
 ﻿const CACHE_NAME = 'test-cache-v1';
 const urlsToCache = [
   '/',
-  '/battlestar_demo_view.html',
+  '/battlestar_demo_view',
   '/battlestar_demo_main.js',
 ];
 
