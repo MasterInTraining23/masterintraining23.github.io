@@ -13,5 +13,5 @@
   messageChannel.port1.onmessage = event => {
     console.log('msg from SW', event); 
   }
-  navigator.serviceWorker.controller.postMessage([messageChannel.port2]);
+  navigator.serviceWorker.controller.postMessage("something", [messageChannel.port2]);
 }
