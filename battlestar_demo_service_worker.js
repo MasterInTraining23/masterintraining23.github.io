@@ -18,7 +18,6 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', function(event) {
-  console.log('fetching:', event.request);
   event.respondWith(
     caches.match(event.request)
       .then(function(response) {
@@ -34,7 +33,7 @@ self.addEventListener('fetch', function(event) {
 });
 
 self.addEventListener('message', event => {
-  console.log("received msg from client", event.data);
+  console.log("received msg from client", event);
   event.waitUntil(async function() {
     // Exit early if we don't have access to the client.
     // Eg, if it's cross-origin.
