@@ -1,6 +1,4 @@
-﻿console.log("battlestar main");
-
-if ('serviceWorker' in navigator) {
+﻿if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/battlestar_demo_service_worker.js').then(function(registration) {
       // Registration was successful
@@ -10,4 +8,10 @@ if ('serviceWorker' in navigator) {
       console.log('ServiceWorker registration failed: ', err);
     });
   });
+
+  const messageChannel = new MessageChannel();
+  messageChannel.port1.onmessage = event => {
+    console.log('msg from SW', event); 
+  }
+  navigator.serviceWorker.controller.postMessage([messageChannel.port2]);
 }
