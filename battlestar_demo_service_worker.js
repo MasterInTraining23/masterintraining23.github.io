@@ -22,3 +22,8 @@
    
   }());
 });
+
+self.addEventListener('message', event => {
+  console.log("received msg from client", event.data);
+  event.ports[0].postMessage('private msg back');
+});
