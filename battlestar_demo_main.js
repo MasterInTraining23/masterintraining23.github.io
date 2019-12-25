@@ -14,4 +14,4 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-navigator.serviceWorker.controller.postMessage({msgType: 'UPDATE_CACHE', randomInfo: 'mad stuff'});
+setTimeout(() => navigator.serviceWorker.controller.postMessage({msgType: 'UPDATE_CACHE', randomInfo: 'mad stuff'}), 3000);
