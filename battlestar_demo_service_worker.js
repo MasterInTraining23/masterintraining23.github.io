@@ -1,26 +1,34 @@
-﻿self.addEventListener('install', event => {
+﻿const CACHE_NAME = 'test-cache-v1';
+const urlsToCache = [
+  '/',
+  '/battlestar_demo_view.html',
+  '/battlestar_demo_main.js',
+];
+
+self.addEventListener('install', event => {
   console.log("msg from install event", event);
   
-  event.waitUntil(async function() {
-    // Exit early if we don't have access to the client.
-    // Eg, if it's cross-origin.
-    if (!event.clientId) return;
-    console.log("we have access to the client");
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      })
+  );
+});
 
-    // Get the client.
-    const client = await clients.get(event.clientId);
-    // Exit early if we don't get the client.
-    // Eg, if it closed.
-    if (!client) return;
-    console.log("there's a client to retrieve");
-
-    // Send a message to the client.
-    client.postMessage({
-      msg: "Hey I just got a fetch from you!",
-      url: event.request.url
-    });
-   
-  }());
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request)
+      .then(function(response) {
+        // Cache hit - return response
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      }
+    )
+  );
 });
 
 self.addEventListener('message', event => {
