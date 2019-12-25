@@ -26,7 +26,7 @@ messageChannel.port1.onmessage = event => {
         for (var i = 0; i < mutation.addedNodes.length; i++) {
           const node = mutation.addedNodes[i];
           if (node.id == 'secondChildStreamItem') {
-            secondChildStreamItem = node;
+            node.insertAdjacentHTML('beforebegin', event.data.streamItem);
             this.disconnect();
             break;
           }
@@ -40,9 +40,9 @@ messageChannel.port1.onmessage = event => {
         attributes: false,
         characterData: false,
     });
+  } else {
+    secondChildStreamItem.insertAdjacentHTML('beforebegin', event.data.streamItem);
   }
-
-  secondChildStreamItem.insertAdjacentHTML('beforebegin', event.data.streamItem);
 }
 
 if ('serviceWorker' in navigator) {
