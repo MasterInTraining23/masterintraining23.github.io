@@ -11,5 +11,5 @@
 
   window.addEventListener("message", event => {
     console.log("msg from SW", event);
-  });
+  }, false);
 }
