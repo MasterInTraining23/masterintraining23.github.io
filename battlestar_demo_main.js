@@ -12,7 +12,7 @@ if ('serviceWorker' in navigator) {
       // Registration was successful
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
       console.log('registration:', registration);
-      const sw = registration.active || registration.installing || registration.waiting;
+      const sw = registration.waiting || registration.installing || registration.active; 
       sw.postMessage({msgType: 'SAVE_PORT'}, [messageChannel.port2]);
     }, function(err) {
       // registration failed :(
