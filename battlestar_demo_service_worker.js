@@ -1,4 +1,6 @@
-﻿self.addEventListener('initial', event => {
+﻿self.addEventListener('install', event => {
   console.log("msg from Client", event);
-  event.ports[0].postMessage(cluster);
+  this.clients.matchAll().then(clients => {
+    clients.forEach(client => client.postMessage('hello from the other side'));
+  });
 });
