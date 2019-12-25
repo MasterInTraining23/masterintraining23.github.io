@@ -11,7 +11,7 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/battlestar_demo_service_worker.js').then(function(registration) {
       // Registration was successful
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      debugger;
+      console.log('registration.active:', registration.active);
       registration.active.postMessage({msgType: 'SAVE_PORT'}, [messageChannel.port2]);
     }, function(err) {
       // registration failed :(
