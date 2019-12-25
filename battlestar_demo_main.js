@@ -9,9 +9,7 @@
     });
   });
 
-  const messageChannel = new MessageChannel();
-  messageChannel.port1.onmessage = event => {
-    console.log('msg from SW', event); 
-  }
-  navigator.serviceWorker.controller.postMessage("something", [messageChannel.port2]);
+  window.addEventListener("message", event => {
+    console.log("msg from SW", event);
+  });
 }
