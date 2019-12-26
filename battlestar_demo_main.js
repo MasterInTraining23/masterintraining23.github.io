@@ -45,6 +45,14 @@ messageChannel.port1.onmessage = event => {
   } else {
     secondChildStreamItem.insertAdjacentHTML('beforebegin', event.data.streamItem);
   }
+
+  window.caches.open('test-cache-v1').then(cache => {
+    const images = window.document.getElementsByTagName('img');
+    for (var i = 0; i < images.length; i++) {
+      const imgRequest = new Request(images.item(i).src, {mode: 'no-cors'});
+      fetch(imgRequest).then(imgResponse => cache.put(imgRequest, imgResponse));
+    }
+  });
 }
 
 if ('serviceWorker' in navigator) {
@@ -55,14 +63,6 @@ if ('serviceWorker' in navigator) {
     }, function(err) {
       // registration failed :(
       console.log('ServiceWorker registration failed: ', err);
-    });
-
-    window.caches.open('test-cache-v1').then(cache => {
-      const images = window.document.getElementsByTagName('img');
-      for (var i = 0; i < images.length; i++) {
-        const imgRequest = new Request(images.item(i).src, {mode: 'no-cors'});
-        fetch(imgRequest).then(imgResponse => cache.put(imgRequest, imgResponse));
-      }
     });
   });
 
