@@ -59,7 +59,7 @@ if ('serviceWorker' in navigator) {
       const images = window.document.getElementsByTagName('img');
       for (var i = 0; i < images.length; i++) {
         const imgRequest = new Request(images.item(i).src, {mode: 'no-cors'});
-        fetch(imgRequest).then(response => cache.put(request, response));
+        fetch(imgRequest).then(imgResponse => cache.put(imgRequest, imgResponse));
       }
     });
   });
