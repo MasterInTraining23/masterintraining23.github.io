@@ -54,6 +54,15 @@ if ('serviceWorker' in navigator) {
       // registration failed :(
       console.log('ServiceWorker registration failed: ', err);
     });
+
+    window.caches.open('test-cache-v1').then(cache => {
+      const imgSrcsToCache = [];
+      const images = window.document.getElementsByTagName('img');
+      for (var i = 0; i < images.length; i++) {
+        imgSrcsToCache.push(images.item(i).src);
+      }
+      return cache.addAll(imgSrcsToCache);
+    });
   });
 
   console.log('navigator.serviceWorker', navigator.serviceWorker);
