@@ -56,16 +56,11 @@ if ('serviceWorker' in navigator) {
     });
 
     window.caches.open('test-cache-v1').then(cache => {
-      const imgSrcsToCache = [];
       const images = window.document.getElementsByTagName('img');
       for (var i = 0; i < images.length; i++) {
-        imgSrcsToCache.push(images.item(i).src);
-        // const imgRequest = new Request(images.item(i).src, {mode: 'no-cors'});
-        // fetch(imgRequest).then(response => cache.put(request, response));
+        const imgRequest = new Request(images.item(i).src, {mode: 'no-cors'});
+        fetch(imgRequest).then(response => cache.put(request, response));
       }
-      navigator.serviceWorker.ready.then(registration => {
-        registration.active.postMessage({msgType: 'IMG_CACHE', imgSrcsToCache: imgSrcsToCache});
-      });
     });
   });
 
