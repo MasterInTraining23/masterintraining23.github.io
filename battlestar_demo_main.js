@@ -72,6 +72,8 @@ if ('serviceWorker' in navigator) {
   });
 
   navigator.serviceWorker.ready.then(registration => {
-    registration.active.postMessage({msgType: 'UPDATE_CACHE', streamItem: continuePlayingStreamItem});
+    setTimeout(() => {
+      registration.active.postMessage({msgType: 'UPDATE_CACHE', streamItem: continuePlayingStreamItem});
+    }, 3000);
   });
 }
