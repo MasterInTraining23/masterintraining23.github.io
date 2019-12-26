@@ -3,6 +3,7 @@ const urlsToCache = [
   '/',
   '/battlestar_demo_view',
   '/battlestar_demo_main.js',
+  'https://lh3.googleusercontent.com/ZGGpSa2GtdeMFcwKHW9h6ojeIBzgXObey972LE-9KgLRrB2d2GtjzS9mRvWh72TLvVHdk2nXXN4G=w515-h290-rw',
 ];
 
 self.addEventListener('install', event => {
