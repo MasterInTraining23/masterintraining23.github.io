@@ -71,4 +71,9 @@ self.addEventListener('message', event => {
       localCacheForRaceCondition = event.data;
     }
   }
+  if (event.data.msgType == 'IMG_CACHE') {
+    caches.open(CACHE_NAME).then(function(cache) {
+      cache.addAll(event.data.imgSrcsToCache);
+    });
+  }
 });
