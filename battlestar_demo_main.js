@@ -16,7 +16,7 @@
 
 const messageChannel = new MessageChannel();
 messageChannel.port1.onmessage = event => {
-  console.log("adding streamitem");
+  console.log(event.data.streamItem);
   const secondChildStreamItem = window.document.getElementById('secondChildStreamItem');
 
   if (!secondChildStreamItem) {
