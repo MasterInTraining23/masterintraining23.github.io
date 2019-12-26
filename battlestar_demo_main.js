@@ -1,4 +1,4 @@
-﻿var continuePlayingStreamItem = `<c-wiz jsrenderer="Y413Bc" class="UBeTzd Ubi8Z" jslog="38000; 1:400|CBSqARUKEwiBv8vxj87mAhVBFWIKHck2Dig=; track:click,impression" jsshadow="" jsdata="deferred-i22" data-p="%.@.true,true,[[10,[10,50]
+﻿var continuePlayingStreamItem = `<c-wiz jsrenderer="Y413Bc" id="addedStreamItem" class="UBeTzd Ubi8Z" jslog="38000; 1:400|CBSqARUKEwiBv8vxj87mAhVBFWIKHck2Dig=; track:click,impression" jsshadow="" jsdata="deferred-i22" data-p="%.@.true,true,[[10,[10,50]
 ]
 ,true,null,[96,27,4,8,57,30,110,79,11,16,49,1,3,9,12,104,55,56,51,10,34,31,77]
 ]
@@ -16,6 +16,7 @@
 
 const messageChannel = new MessageChannel();
 messageChannel.port1.onmessage = event => {
+  console.log("adding streamitem");
   const secondChildStreamItem = window.document.getElementById('secondChildStreamItem');
 
   if (!secondChildStreamItem) {
