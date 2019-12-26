@@ -20,6 +20,7 @@ messageChannel.port1.onmessage = event => {
   const secondChildStreamItem = window.document.getElementById('secondChildStreamItem');
 
   if (!secondChildStreamItem) {
+    console.log("no secondChildStreamItem");
     const observer = new MutationObserver(function(mutations) {
       mutations.forEach(function(mutation) {
         if (!mutation.addedNodes) return
