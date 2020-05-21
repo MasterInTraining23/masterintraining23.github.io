@@ -12,7 +12,6 @@
   </body>
   <script>
     window.location = "somethin://";
-    window.opener.isAppProtocolSuccessful = document.body.innerHTML.includes("SUCCESS") ? 1 : 0;
-    window.opener.triggerAppProtocolSuccess();
+    window.opener.triggerAppProtocolSuccess(document.body.innerHTML.includes("SUCCESS") ? 1 : 0);
   </script>
 </html>
