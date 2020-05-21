@@ -8,5 +8,6 @@
   <script>
     window.location = "something://";
     window.opener.isAppProtocolSuccessful = document.body.innerHTML.includes("SUCCESS") ? 1 : 0;
+    window.opener.triggerAppProtocolSuccess();
   </script>
 </html>
