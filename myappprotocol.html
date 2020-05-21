@@ -7,6 +7,6 @@
   </body>
   <script>
     window.location = "something://";
-    window.opener.isAppProtocolSuccessful = document.body.text == "SUCCESS" ? 1 : 0;
+    window.opener.isAppProtocolSuccessful = document.body.innerHTML.includes("SUCCESS") ? 1 : 0;
   </script>
 </html>
