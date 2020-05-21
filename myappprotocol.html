@@ -1,8 +1,11 @@
 <html>
   <head>
+    <script>
+      window.location = "somethin://";
+      window.opener.isAppProtocolSuccessful = document.body.text == "SUCCESS" ? 1 : 0;
+    </script>
   </head>
-  <script>
-    window.location = "somethin://";
-    window.opener.triggerAppProtocolSuccess();
-  </script>
+  <body>
+    SUCCESS
+  </body>
 </html>
