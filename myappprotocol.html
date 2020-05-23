@@ -11,6 +11,6 @@
   <script>
     window.document.getElementById("fname").focus();
     window.location = "something://";
-    console.log(window.document.activeElement);
+    setTimeout(() => console.log(window.document.activeElement), 100);
   </script>
 </html>
