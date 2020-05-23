@@ -27,6 +27,7 @@
      window.isAppInstalled = 0;
       
      function testExistence() {
+       setInterval(() => console.log("isAppInstalled: " + window.isAppInstalled), 100);
        if (window.isAppInstalled) {
          console.log(testProtocolWindow.location.hostname);
          testResultsArea.innerHTML = "Application Exists! :)";
