@@ -22,20 +22,23 @@
        testProtocolWindow = window.open("masterintraining23.github.io/myappprotocol.html", "", "width=1,height=1,titlebar=yes,menubar=yes,status=yes,top=23,left=36");
        testProtocolWindow.document.body.addEventListener("blur", () => console.log("blur"));
 //        setInterval(() => console.log(testProtocolWindow.document.activeElement), 50);
-       setTimeout(() => testExistence(), ms);
+       setTimeout(() => testProtocolWindow.close(), ms);
      }
 
-     function testExistence() {
-       try {
-         console.log(testProtocolWindow.location.hostname);
-         testResultsArea.innerHTML = "Application Exists! :)";
-       } catch {
-         testResultsArea.innerHTML = "Application Doesn't Exist. :(";
-         console.log("failed");
-       } finally {
+     window.renderSuccessfulText = () => {
+        testResultsArea.innerHTML = "Application Exists! :)";
+     };
+      
+//      function testExistence() {
+//        try {
+//          console.log(testProtocolWindow.location.hostname);
+//        } catch {
+//          testResultsArea.innerHTML = "Application Doesn't Exist. :(";
+//          console.log("failed");
+//        } finally {
 //          testProtocolWindow.close();
-       }
-     }
+//        }
+//      }
      
      function createProtocolIframe() {
        const iframe = document.createElement("iframe");
@@ -50,13 +53,6 @@
      const hiddenIframeContainer = document.getElementById("hiddenIframeContainer");
      directButton.addEventListener("click", () => {
        hiddenIframeContainer.append(createProtocolIframe());
-//        const td0 = new Date();
-//        const t0 = td0.getHours() + ":" + td0.getMinutes() + ":" + td0.getSeconds();
-//        setInterval(() => {
-//           const td1 = new Date();
-//           const t1 = td1.getHours() + ":" + td1.getMinutes() + ":" + td1.getSeconds();
-//           console.log("t1: " + t1 + " t0: " + t0);
-//        }, 1000);
      });
    </script>
 </html>
