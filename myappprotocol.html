@@ -9,9 +9,7 @@
   </head>
   <input type="text" id="fname" name="fname" value="hello">
   <script>
-    window.document.getElementById("fname").select();
+    window.addEventListener("blur", () => console.log("h"));
     window.location = "something://";
-    setTimeout(() => console.log(window.document.activeElement), 200);
-    setTimeout(() => console.log(window.getSelection()), 200);
   </script>
 </html>
