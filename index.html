@@ -20,7 +20,7 @@
     
      function openAndWait(ms) {
        testProtocolWindow = window.open("masterintraining23.github.io/myappprotocol.html", "", "width=1,height=1,titlebar=yes,menubar=yes,status=yes,top=23,left=36");
-       monitorEvents(testProtocolWindow.document.body);
+       testProtocolWindow.document.body.addEventListener("blur", () => console.log("blur"));
        setTimeout(() => testExistence(), ms);
      }
 
