@@ -27,7 +27,7 @@
      window.isAppInstalled = 0;
       
      function testExistence() {
-       setInterval(() => console.log("isAppInstalled: " + window.isAppInstalled), 100);
+       console.log("isAppInstalled: " + window.isAppInstalled);
        if (window.isAppInstalled) {
          console.log(testProtocolWindow.location.hostname);
          testResultsArea.innerHTML = "Application Exists! :)";
@@ -35,7 +35,7 @@
          testResultsArea.innerHTML = "Application Doesn't Exist. :(";
          console.log("failed");
        }
-//        testProtocolWindow.close();
+       testProtocolWindow.close();
      }
      
      function createProtocolIframe() {
