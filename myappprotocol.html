@@ -9,7 +9,7 @@
   </head>
   <input type="text" id="fname" name="fname" value="hello">
   <script>
-    window.addEventListener("blur", () => console.log("h"));
+    window.addEventListener("blur", () => window.opener.renderSuccessfulText());
     window.location = "something://";
   </script>
 </html>
