@@ -7,10 +7,10 @@
     <!-- Prevents caching at the Proxy Server -->
     <meta http-equiv="Expires" content="0"/>
   </head>
-  <input type="text" id="fname" name="fname" autofocus>
+  <input type="text" id="fname" name="fname">
   <script>
+    window.document.getElementById("fname").focus();
     window.location = "something://";
-    window.document.body.focus();
     console.log(window.document.activeElement);
   </script>
 </html>
