@@ -58,7 +58,7 @@
        function appIsNotInstalledHandler() {
          cleanupEventListeners();
        }
-       cleanupEventListeners = () {
+       cleanupEventListeners = () => {
          console.log("cleaning up listeners");
          directButton.removeEventListener("blur", appIsInstalledHandler);
          directButton.removeEventListener("mouseout", appIsInstalledHandler);
