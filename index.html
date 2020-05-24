@@ -51,15 +51,15 @@
      const hiddenIframeContainer = document.getElementById("hiddenIframeContainer");
      directButton.addEventListener("click", () => {
        buttonState = 1;
-       directButton.addEventListener("mousemove", () => {
-         directButton.removeEventListener("mouseout");
-         directButton.removeEventListener("blur");
-       });
-       directButton.addEventListener("blur", () => {
+       const blurListener = directButton.addEventListener("blur", () => {
          window.isAppInstalled = 1;
        });
-       directButton.addEventListener("mouseout", () => {
+       const mouseOutListener = directButton.addEventListener("mouseout", () => {
          window.isAppInstalled = 1;
+       });
+       const mouseMoveListener = directButton.addEventListener("mousemove", () => {
+         directButton.removeEventListener("mouseout", mouseOutListener);
+         directButton.removeEventListener("blur", blurListener);
        });
        hiddenIframeContainer.append(createProtocolIframe());
        setTimeout(() => testExistence(), 75);
