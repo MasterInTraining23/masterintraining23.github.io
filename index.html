@@ -50,7 +50,19 @@
      const directButton = document.getElementById("directTriggerButton");
      const hiddenIframeContainer = document.getElementById("hiddenIframeContainer");
      directButton.addEventListener("click", () => {
+       buttonState = 1;
+       directButton.addEventListener("mousemove", () => {
+         directButton.removeEventListener("mouseout");
+         directButton.removeEventListener("blur");
+       });
+       directButton.addEventListener("blur", () => {
+         window.isAppInstalled = 1;
+       });
+       directButton.addEventListener("mouseout", () => {
+         window.isAppInstalled = 1;
+       });
        hiddenIframeContainer.append(createProtocolIframe());
      });
+     
    </script>
 </html>
