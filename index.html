@@ -50,19 +50,32 @@
      const directButton = document.getElementById("directTriggerButton");
      const hiddenIframeContainer = document.getElementById("hiddenIframeContainer");
      directButton.addEventListener("click", () => {
-       const blurListener = directButton.addEventListener("blur", () => {
-         window.isAppInstalled = 1;
-       });
-       const mouseOutListener = directButton.addEventListener("mouseout", () => {
-         window.isAppInstalled = 1;
-       });
-       const mouseMoveListener = directButton.addEventListener("mousemove", () => {
+       var blurListener
+       var mouseOutListener;
+       var mouseMoveListener;
+       var keyUpListener;
+       function cleanupEventListeners() {
+         directButton.removeEventListener("keyup", keyUpListener);
+         directButton.removeEventListener("mousemove", mouseMoveListener);
          directButton.removeEventListener("mouseout", mouseOutListener);
          directButton.removeEventListener("blur", blurListener);
+       }
+       blurListener = directButton.addEventListener("blur", () => {
+         window.isAppInstalled = 1;
+         cleanupEventListeners();
+       });
+       mouseOutListener = directButton.addEventListener("mouseout", () => {
+         window.isAppInstalled = 1;
+         cleanupEventListeners();
+       });
+       mouseMoveListener = directButton.addEventListener("mousemove", () => {
+         cleanupEventListeners();        
+       });
+       keyUpListener = directButton.addEventListener("keyup", () => {
+         cleanupEventListeners();        
        });
        hiddenIframeContainer.append(createProtocolIframe());
        setTimeout(() => testExistence(), 75);
      });
-     
    </script>
 </html>
