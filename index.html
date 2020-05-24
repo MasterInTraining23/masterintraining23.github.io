@@ -50,7 +50,6 @@
      const directButton = document.getElementById("directTriggerButton");
      const hiddenIframeContainer = document.getElementById("hiddenIframeContainer");
      directButton.addEventListener("click", () => {
-       buttonState = 1;
        const blurListener = directButton.addEventListener("blur", () => {
          window.isAppInstalled = 1;
        });
